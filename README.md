@@ -1,4 +1,4 @@
-# Portfolio — Sanjeet Patel
+# Portfolio — Snehlata Sharma
 
 A portfolio site with a WebGL particle system that changes shape as you scroll. Built with **Three.js** (custom GLSL shaders + bloom), **GSAP ScrollTrigger** and **Lenis** smooth scrolling. There is no build step: it is plain HTML/CSS/JS loaded from CDNs.
 
