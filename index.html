@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snehlata Sharma — Software Development Engineer</title>
+  <meta name="description" content="Portfolio of Snehlata Sharma, Software Development Engineer building scalable backends, cloud systems and AI products." />
+  <meta name="theme-color" content="#08070b" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23d7ff3a'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>history.scrollRestoration = "manual"; window.scrollTo(0, 0);</script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="is-loading">
+  <!-- Preloader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__name"><span data-name></span></div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <div class="loader__meta">
+        <span>Compiling experience</span>
+        <span class="loader__count" id="loaderCount">000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D canvas -->
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Cursor -->
+  <div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label"></span></div></div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-cursor="Home"><span class="nav__logo-first" data-firstname></span><span class="nav__logo-dot">.</span><span class="nav__logo-tag mono">SDE</span></a>
+    <nav class="nav__links" id="navLinks">
+      <span class="nav__indicator" id="navIndicator"></span>
+      <a href="#about">About</a>
+      <a href="#skills">Stack</a>
+      <a href="#experience">Journey</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__time mono"><span id="clock">--:--</span></span>
+      <a href="#contact" class="btn btn--primary btn--small magnetic" data-cursor="Say hi"><span>Hire me</span><i>↗</i></a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a><a href="#skills">Stack</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#contact">Contact</a>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" data-scene="hero">
+      <div class="hero__grid-bg" aria-hidden="true"></div>
+
+      <h1 class="hero__title" aria-label="name">
+        <span class="hero__line hero__line--1"><span class="hero__word" data-bigname></span></span>
+        <span class="hero__line hero__line--2"><span class="hero__word serif-i" data-lastname></span></span>
+      </h1>
+
+      <div class="hero__orb" id="heroOrb" data-cursor="Click me">
+        <svg class="hero__ring" viewBox="0 0 600 600" aria-hidden="true">
+          <defs><path id="haloPath" d="M300,300 m-282,0 a282,282 0 1,1 564,0 a282,282 0 1,1 -564,0" /></defs>
+          <circle cx="300" cy="300" r="250" class="ring__dash" />
+          <circle cx="300" cy="300" r="250" class="ring__arc" />
+          <text class="halo__text"><textPath href="#haloPath" data-ringtext></textPath></text>
+        </svg>
+        <span class="hero__orb-hint mono">click to explode ✦</span>
+
+        <div class="sticker sticker--1" data-drag><span class="sticker__dot"></span><span data-sticker="work"></span></div>
+        <div class="sticker sticker--2" data-drag><b>★</b> <span data-sticker="dsa"></span></div>
+        <div class="sticker sticker--3" data-drag><code data-sticker="code"></code></div>
+        <div class="sticker sticker--4" data-drag><span data-sticker="cgpa"></span></div>
+      </div>
+
+      <div class="hero__left">
+        <span class="pill reveal-fade"><span class="dot dot--live"></span><span data-availability></span></span>
+        <div class="hero__role mono"><span class="muted">I’m a</span> <span class="typed" id="typed"></span><span class="caret"></span></div>
+        <p class="hero__tagline reveal-fade" data-tagline></p>
+      </div>
+
+      <div class="hero__right reveal-fade">
+        <div class="hero__cta">
+          <a href="#work" class="btn btn--primary magnetic" data-cursor="View"><span>See my work</span><i>↘</i></a>
+          <a href="#" class="btn magnetic" data-resume target="_blank" data-cursor="PDF"><span>Résumé</span><i>↓</i></a>
+        </div>
+        <div class="hero__socials mono" id="heroSocials"></div>
+      </div>
+
+      <div class="hero__coords mono" aria-hidden="true"><span>28.47°N 77.50°E</span><span id="hudCoords">x 0.00 · y 0.00</span></div>
+      <a href="#about" class="hero__scroll" data-cursor="Scroll"><span class="mono">Scroll</span><span class="hero__scroll-line"></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about" data-scene="about">
+      <div class="section__head">
+        <span class="eyebrow mono">01 / About</span>
+        <span class="eyebrow mono muted">The person behind the code</span>
+      </div>
+      <div class="about__grid">
+        <div class="about__text">
+          <h2 class="h2 split">Code is the tool. <em class="serif-i grad">Impact</em> is the point.</h2>
+          <p class="lead reveal" data-about></p>
+          <div class="stats" id="stats"></div>
+        </div>
+        <div class="about__side">
+        <figure class="polaroid polaroid--b" data-drag data-cursor="Drag me">
+          <div class="polaroid__img"><img data-polaroid="1" alt="" draggable="false" /></div>
+          <figcaption data-polaroidcap="1"></figcaption>
+        </figure>
+        <figure class="polaroid" data-drag data-cursor="Drag me">
+          <div class="polaroid__img"><img data-polaroid="0" alt="" draggable="false" /></div>
+          <figcaption data-polaroidcap="0"></figcaption>
+        </figure>
+        <div class="terminal reveal tilt" data-cursor="whoami">
+          <div class="terminal__bar"><i></i><i></i><i></i><span class="mono">~/snehlata — zsh</span></div>
+          <pre class="terminal__body mono" id="terminal"></pre>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills" data-scene="skills">
+      <div class="section__head">
+        <span class="eyebrow mono">02 / Stack</span>
+        <span class="eyebrow mono muted">Physics enabled — go on, throw things</span>
+      </div>
+      <div class="skills__top">
+        <h2 class="h2 split">My toolbox. <em class="serif-i grad">Throw</em> it around.</h2>
+        <div class="skills__controls">
+          <div class="legend" id="legend"></div>
+          <div class="skills__actions">
+            <button class="chip-btn" id="shakeBtn" data-cursor="Shake">⚡ Shake it</button>
+            <button class="chip-btn" id="gravityBtn" data-cursor="Float">🪐 Zero-G</button>
+          </div>
+        </div>
+      </div>
+      <div class="playground" id="playground" data-cursor="Drag">
+        <div class="playground__hint mono">drag · throw · stack</div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section experience" id="experience" data-scene="experience">
+      <div class="section__head">
+        <span class="eyebrow mono">03 / Experience</span>
+        <span class="eyebrow mono muted">Where I’ve shipped</span>
+      </div>
+      <h2 class="h2 split">The journey, <em class="serif-i grad">commit</em> by commit.</h2>
+      <div class="timeline" id="timeline"><div class="timeline__line"><span id="timelineProgress"></span></div></div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work" id="work" data-scene="work">
+      <div class="work__pin">
+        <div class="work__intro">
+          <span class="eyebrow mono">04 / Selected work</span>
+          <h2 class="h2 split">Ideas are cheap. <em class="serif-i grad">Shipping</em> isn’t.</h2>
+          <p class="muted">A few things I’ve designed, built and put into the world.</p>
+          <div class="work__progress mono"><span id="workCount">01</span> / <span id="workTotal">04</span></div>
+        </div>
+        <div class="work__track" id="workTrack"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" data-scene="contact">
+      <span class="eyebrow mono">05 / Contact</span>
+      <h2 class="contact__title split">Let’s build <br /><em class="serif-i grad">something great.</em></h2>
+      <p class="lead reveal">Have a role, a project or just an idea? My inbox is always open.</p>
+      <button class="contact__email magnetic reveal" id="copyEmail" data-cursor="Copy">
+        <span data-email></span><i id="copyState">Copy ⧉</i>
+      </button>
+      <div class="contact__socials reveal" id="socials"></div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="year"></span> <span data-fullname></span></span>
+    <span>Designed &amp; engineered with intent · Three.js + GSAP</span>
+    <a href="#top" data-cursor="Top">Back to top ↑</a>
+  </footer>
+
+  <div class="toast mono" id="toast">Email copied to clipboard ✓</div>
+
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/Draggable.min.js"></script>
+  <script src="https://unpkg.com/matter-js@0.19.0/build/matter.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
